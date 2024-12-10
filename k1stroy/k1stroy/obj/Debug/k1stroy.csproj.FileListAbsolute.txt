@@ -1,0 +1,15 @@
+S:\Diplom\k1stroy\k1stroy\bin\Debug\k1stroy.exe.config
+S:\Diplom\k1stroy\k1stroy\bin\Debug\k1stroy.exe
+S:\Diplom\k1stroy\k1stroy\bin\Debug\k1stroy.pdb
+S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.csproj.AssemblyReference.cache
+S:\Diplom\k1stroy\k1stroy\obj\Debug\MainWindow.g.cs
+S:\Diplom\k1stroy\k1stroy\obj\Debug\App.g.cs
+S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy_MarkupCompile.cache
+S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy_MarkupCompile.lref
+S:\Diplom\k1stroy\k1stroy\obj\Debug\MainWindow.baml
+S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.g.resources
+S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.Properties.Resources.resources
+S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.csproj.GenerateResource.cache
+S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.csproj.CoreCompileInputs.cache
+S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.exe
+S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.pdb
