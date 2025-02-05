@@ -1,0 +1,107 @@
+﻿<Page x:Class="k1stroy.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:k1stroy.Pages"
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="LoginPage">
+
+    <Grid>
+
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center"
+                   FontSize="50" FontFamily="Calibri" Margin="0,170,0,0">
+            <Run Text="К1" Foreground="#19B2DD"></Run>
+            <Run Text="|СТРОЙ" Foreground="#636363"></Run>
+        </TextBlock>
+
+        <Grid Background="#65CFED" Width="300" Height="156"
+              VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <Grid.Effect>
+                <DropShadowEffect Color="#4CE4E4E4"/>
+            </Grid.Effect>
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBox Width="223" Height="30" PreviewMouseDown="loginTB_PreviewMouseDown" x:Name="loginTB"
+                         Text="логин" TextAlignment="Center"
+                         VerticalContentAlignment="Center">
+                    <TextBox.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ScrollViewer Margin="0" x:Name="PART_ContentHost"></ScrollViewer>
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+
+                <TextBox Width="223" Height="30" Margin="0,15,0,0"
+                         Text="пароль" TextAlignment="Center" 
+                         x:Name="passwordTB" PreviewMouseDown="passwordTB_PreviewMouseDown"
+                         VerticalContentAlignment="Center">
+                    <TextBox.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ScrollViewer Margin="0" x:Name="PART_ContentHost"></ScrollViewer>
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+
+                <PasswordBox Width="223" Height="30" Margin="0,15,0,0" Visibility="Collapsed"
+                         x:Name="passwordPB" HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center">
+                    <PasswordBox.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ScrollViewer Margin="0" x:Name="PART_ContentHost"></ScrollViewer>
+                            </Border>
+                        </ControlTemplate>
+                    </PasswordBox.Template>
+                </PasswordBox>
+
+
+                <Button Content="ВОЙТИ" Margin="0,15,0,0" Cursor="Hand"
+                        Width="110" Height="27" Padding="1" x:Name="loginBut" Click="loginBut_Click"
+                        BorderBrush="#0258B9" BorderThickness="2">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="10" Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding Background}"
+                                    BorderThickness="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                </ContentPresenter>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+            </StackPanel>
+            
+           
+
+
+        </Grid>
+
+        <Image gif:ImageBehavior.AnimatedSource="/Res/happicat-logo.gif" 
+               gif:ImageBehavior.RepeatBehavior="Forever"
+               Width="300" Visibility="Collapsed"
+               VerticalAlignment="Bottom" HorizontalAlignment="Center"
+               x:Name="cat"/>
+
+        <Image Source="/Res/Lines1.png" Width="200"
+               VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+
+        <Image Source="/Res/Lines2.png" Width="200"
+               VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+
+        <Image Source="/Res/Lines3.png" Width="200"
+               VerticalAlignment="Top" HorizontalAlignment="Left" />
+
+        <Image Source="/Res/Lines4.png" Width="200"
+               VerticalAlignment="Top" HorizontalAlignment="Right" />
+
+    </Grid>
+</Page>

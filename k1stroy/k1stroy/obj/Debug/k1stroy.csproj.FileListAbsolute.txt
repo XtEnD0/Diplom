@@ -13,3 +13,11 @@ S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.csproj.GenerateResource.cache
 S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.csproj.CoreCompileInputs.cache
 S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.exe
 S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.pdb
+S:\Diplom\k1stroy\k1stroy\obj\Debug\Pages\LoginPage.g.cs
+S:\Diplom\k1stroy\k1stroy\obj\Debug\Pages\UntitledPage.g.cs
+S:\Diplom\k1stroy\k1stroy\obj\Debug\Pages\LoginPage.baml
+S:\Diplom\k1stroy\k1stroy\obj\Debug\Pages\UntitledPage.baml
+S:\Diplom\k1stroy\k1stroy\bin\Debug\WpfAnimatedGif.dll
+S:\Diplom\k1stroy\k1stroy\bin\Debug\WpfAnimatedGif.pdb
+S:\Diplom\k1stroy\k1stroy\bin\Debug\WpfAnimatedGif.xml
+S:\Diplom\k1stroy\k1stroy\obj\Debug\k1stroy.csproj.CopyComplete

@@ -13,19 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace k1stroy
+namespace k1stroy.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для UntitledPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UntitledPage : Page
     {
-        public MainWindow()
+        public UntitledPage()
         {
             InitializeComponent();
-            Classes.manager.MainFrame = MainFrame;
-            Classes.manager.MainFrame.Navigate(new Pages.LoginPage());
         }
-
     }
 }
