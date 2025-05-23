@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 S:\Diplom\k1stroy\k1stroy\App.xaml
-3698439200
-
-9-1700221895
-14862568510
-MainWindow.xaml;Pages\LoginPage.xaml;Pages\UntitledPage.xaml;
+15-1448132646
+2-747231112
+33-1030451681
+191132403235
+Dialogs\ConfirmClose.xaml;Dialogs\ConfirmOrder.xaml;Dialogs\OrderEditAdmin.xaml;Dialogs\OrderEditManager.xaml;Dialogs\ProfileDialog.xaml;Dialogs\UserAdd.xaml;Dialogs\UserEdit.xaml;MainWindow.xaml;Pages\AddPage.xaml;Pages\EditPage.xaml;Pages\LoginPage.xaml;Pages\OrderObservePage.xaml;Pages\ProductPage.xaml;Pages\UntitledPage.xaml;Pages\UserParametersPage.xaml;
 
 True
 

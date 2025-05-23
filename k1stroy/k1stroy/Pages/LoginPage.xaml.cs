@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,11 @@ namespace k1stroy.Pages
     /// </summary>
     public partial class LoginPage : Page
     {
+        
         public int q = 0;
         public LoginPage()
         {
+            Classes.manager.Leave = 0;
             InitializeComponent();
         }
 
@@ -60,11 +63,63 @@ namespace k1stroy.Pages
             if (err.Length > 0)
             {
                 MessageBox.Show(err.ToString(), "Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (Data.k1stroyDBEntities.GetContext().Users
+                        .Any(d => d.Login == loginTB.Text &&
+                        d.Password == passwordPB.Password))
+            {
+                var user = Data.k1stroyDBEntities.GetContext().Users
+                    .Where(d => d.Login == loginTB.Text
+                    && d.Password == passwordPB.Password).FirstOrDefault();
+                Classes.manager.CurrentUser = user;
+                MessageBox.Show($"Добро пожаловать, {user.Surname} {user.Firstname} {user.Patronymic}!","Выполнен вход в учетную запись", MessageBoxButton.OK, MessageBoxImage.Information);
+                string logline = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - выполнен вход в учетную запись ({user.Surname} {user.Firstname} {user.Patronymic})";
+                File.AppendAllText("log.txt", logline + Environment.NewLine);
+                switch (user.Roles.Role)
+                {
+                    case "Admin":
+                        Classes.manager.MainFrame.Navigate(new Pages.ProductPage(user));
+                        break;
+                    case "Manager":
+                        Classes.manager.MainFrame.Navigate(new Pages.ProductPage(user));
+                        break;
+                    case "Customer":
+                        Classes.manager.MainFrame.Navigate(new Pages.ProductPage(user));
+                        break;
+
+                }
             }
             else
             {
-                cat.Visibility = Visibility.Visible;
+                switch (loginTB.Text) {
+                    case "kittycat":
+                        if (passwordPB.Password == "cat") {
+                            
+                            cat.Visibility = Visibility.Visible;
+                            MessageBox.Show("Пасхалка активирована");
+                            string logline = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - Активирована пасхалка (кот)";
+                            File.AppendAllText("log.txt", logline + Environment.NewLine);
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Неверный Логин или Пароль", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+
+                        break;
+                    default:
+                        MessageBox.Show("Неверный Логин или Пароль", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+
+
+
+
+
+
+                }
             }
+
         }
     }
 }

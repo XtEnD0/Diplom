@@ -1,0 +1,198 @@
+﻿<Page x:Class="k1stroy.Pages.OrderObservePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:k1stroy.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OrderObservePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#19B2DD">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBox x:Name="SearchTextBox" Width="200" Height="25" HorizontalContentAlignment="Center"
+                         VerticalContentAlignment="Center"
+                         TextChanged="SearchTextBox_TextChanged" ></TextBox>
+                <Button x:Name="SearchButton" Height="25" Content="🔎" BorderThickness="0" Background="White"
+                    Margin="0,0,10,0" Click="SearchButton_Click" Cursor="Hand"></Button>
+
+            </StackPanel>
+
+
+
+        </Grid>
+
+        <Label x:Name="NoOrders" Content="У вас пока нет заказов." VerticalAlignment="Center" HorizontalAlignment="Center"
+               Grid.Row="1" FontSize="20"></Label>
+        <Label x:Name="NoFoundOrders" Content="ничего не найдено(" VerticalAlignment="Center" HorizontalAlignment="Center"
+               Grid.Row="1" FontSize="20"></Label>
+        <ListView x:Name="OrdersView" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"></ColumnDefinition>
+                            <ColumnDefinition Width="300"></ColumnDefinition>
+                            <ColumnDefinition Width="65"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+                            <ColumnDefinition Width="120"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="110"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Image Width="120" Height="120" Stretch="Fill" Grid.Column="0">
+                            <Image.Source>
+                                <Binding Path="Products.Photo">
+                                    <Binding.TargetNullValue>
+                                        <BitmapImage UriSource="/Res/imagenull.png"></BitmapImage>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                            <StackPanel VerticalAlignment="Center" Margin="0,0,10,0" Grid.Column="1">
+                            <TextBlock Text="{Binding Products.ProductName, StringFormat={}{0}}"
+                                       TextWrapping="Wrap" MaxWidth="300"
+                               FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Products.ProductCategory.CategoryName, StringFormat={}{0}}"></TextBlock>
+                            <TextBlock Text="{Binding Products.InStock, StringFormat='В наличии: {0:0;;нет}'}"/>
+                            <TextBlock Text="{Binding Products.Price, StringFormat={}Цена: {0}}"/>
+                        </StackPanel>
+
+                            <TextBlock Text="Заказчик:" VerticalAlignment="Center" FontWeight="Bold" Grid.Column="2"/>
+
+                            <StackPanel VerticalAlignment="Center" Margin="0,0,10,0" Orientation="Horizontal" Grid.Column="3">
+                            <TextBlock Text="{Binding Users.Surname, StringFormat={}{0}}"/>
+                            <TextBlock Text="{Binding Users.Firstname, StringFormat={} {0}}"/>
+                            <TextBlock Text="{Binding Users.Patronymic, StringFormat={} {0}}"/>
+                        </StackPanel>
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="4">
+                            <TextBlock Text="Дата создания:" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                            <TextBlock Text="Дата завершения:" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                        </StackPanel>
+                        
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="5">
+                            <TextBlock Text="{Binding OrderDate, StringFormat={}{0:yyyy-MM-dd}}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding OrderCompleteDate, 
+                                  StringFormat={}{0:yyyy-MM-dd},
+                                  TargetNullValue='не завершен'}" 
+                                  FontWeight="Bold"/>
+                        </StackPanel>
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="6">
+                            <TextBlock Text="Статус заказа:"/>
+                            <TextBlock Text="{Binding Status.StatusName}"></TextBlock>
+                        </StackPanel>
+                        <Button x:Name="EditOrderButton" Content="Изменить информацию" Grid.Column="7"
+                                Height="30" Cursor="Hand" Width="150" Click="EditOrderButton_Click">
+                            
+                        </Button>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="OrdersViewCustomer" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"></ColumnDefinition>
+                            <ColumnDefinition Width="300"></ColumnDefinition>
+                            <ColumnDefinition Width="65"></ColumnDefinition>
+                            <ColumnDefinition Width="250"></ColumnDefinition>
+                            <ColumnDefinition Width="120"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="110"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Image Width="120" Height="120" Stretch="Fill" Grid.Column="0">
+                            <Image.Source>
+                                <Binding Path="Products.Photo">
+                                    <Binding.TargetNullValue>
+                                        <BitmapImage UriSource="/Res/imagenull.png"></BitmapImage>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <StackPanel VerticalAlignment="Center" Margin="0,0,10,0" Grid.Column="1">
+                            <TextBlock Text="{Binding Products.ProductName, StringFormat={}{0}}"
+                                       TextWrapping="Wrap" MaxWidth="300"
+                               FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Products.ProductCategory.CategoryName, StringFormat={}{0}}"></TextBlock>
+                            <TextBlock Text="{Binding Products.InStock, StringFormat='В наличии: {0:0;;нет}'}"/>
+                            <TextBlock Text="{Binding Products.Price, StringFormat={}Цена: {0}}"/>
+                        </StackPanel>
+
+                        <TextBlock Text="Заказчик:" VerticalAlignment="Center" FontWeight="Bold" Grid.Column="2"/>
+
+                        <StackPanel VerticalAlignment="Center" Margin="0,0,10,0" Orientation="Horizontal" Grid.Column="3">
+                            <TextBlock Text="{Binding Users.Surname, StringFormat={}{0}}"/>
+                            <TextBlock Text="{Binding Users.Firstname, StringFormat={} {0}}"/>
+                            <TextBlock Text="{Binding Users.Patronymic, StringFormat={} {0}}"/>
+                        </StackPanel>
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="4">
+                            <TextBlock Text="Дата создания:" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                            <TextBlock Text="Дата завершения:" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                        </StackPanel>
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="5">
+                            <TextBlock Text="{Binding OrderDate, StringFormat={}{0:yyyy-MM-dd}}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding OrderCompleteDate, 
+                                  StringFormat={}{0:yyyy-MM-dd},
+                                  TargetNullValue='не завершен'}" 
+                                  FontWeight="Bold"/>
+                        </StackPanel>
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="6">
+                            <TextBlock Text="Статус заказа:"/>
+                            <TextBlock Text="{Binding Status.StatusName, StringFormat={}{0}}" FontWeight="Bold"/>
+                        </StackPanel>
+
+                        <Button x:Name="OrderCancelButton" Content="Отменить заказ" Height="30" Cursor="Hand"
+                                    Click="OrderCancelButton_Click" Grid.Column="7" Width="130">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding OrderStatusID}" Value="5">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                            <Setter Property="Background" Value="LightGray"/>
+                                            <Setter Property="Foreground" Value="DarkGray"/>
+                                            <Setter Property="Cursor" Value="Arrow"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding OrderStatusID}" Value="4">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                            <Setter Property="Background" Value="LightGray"/>
+                                            <Setter Property="Foreground" Value="DarkGray"/>
+                                            <Setter Property="Cursor" Value="Arrow"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Row="2" Background="#19B2DD">
+            <Button Content="Назад" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"
+                Height="25" Width="50" x:Name="BackButton" Click="BackButton_Click">
+            </Button>
+        </Grid>
+
+    </Grid>
+</Page>

@@ -6,13 +6,13 @@
       xmlns:local="clr-namespace:k1stroy.Pages"
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="1000"
-      Title="LoginPage">
+      d:DesignHeight="850" d:DesignWidth="1200"
+      Title="Окно Авторизации">
 
     <Grid>
 
-        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center"
-                   FontSize="50" FontFamily="Calibri" Margin="0,170,0,0">
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                   FontSize="50" FontFamily="Calibri" Margin="0,0,0,220">
             <Run Text="К1" Foreground="#19B2DD"></Run>
             <Run Text="|СТРОЙ" Foreground="#636363"></Run>
         </TextBlock>
@@ -25,7 +25,7 @@
 
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBox Width="223" Height="30" PreviewMouseDown="loginTB_PreviewMouseDown" x:Name="loginTB"
-                         Text="логин" TextAlignment="Center"
+                         Text="логин" TextAlignment="Center" FontSize="16"
                          VerticalContentAlignment="Center">
                     <TextBox.Template>
                         <ControlTemplate>
@@ -37,7 +37,7 @@
                 </TextBox>
 
                 <TextBox Width="223" Height="30" Margin="0,15,0,0"
-                         Text="пароль" TextAlignment="Center" 
+                         Text="пароль" TextAlignment="Center" FontSize="16"
                          x:Name="passwordTB" PreviewMouseDown="passwordTB_PreviewMouseDown"
                          VerticalContentAlignment="Center">
                     <TextBox.Template>
@@ -75,6 +75,15 @@
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF19B2DD"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
                 </Button>
 
 

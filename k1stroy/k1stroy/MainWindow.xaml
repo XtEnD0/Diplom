@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:k1stroy"
-        mc:Ignorable="d"
-        Title="Окно Авторизации" Height="650" Width="1000">
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="{Binding ElementName=MainFrame, Path=Content.Title}" Height="800" Width="1300"
+        MinHeight="650" MinWidth="1000"
+        MaxHeight="1080" MaxWidth="1920">
     <Grid>
-        <Frame x:Name="MainFrame"></Frame>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>
