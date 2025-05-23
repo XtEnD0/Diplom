@@ -13,11 +13,16 @@
       <EntityTypeMapping TypeName="k1stroyDBModel.Orders">
         <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="OrderCustomerID" ColumnName="OrderCustomerID" />
+          <ScalarProperty Name="OrderCreatorID" ColumnName="OrderCreatorID" />
           <ScalarProperty Name="OrderProductID" ColumnName="OrderProductID" />
           <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
           <ScalarProperty Name="OrderCompleteDate" ColumnName="OrderCompleteDate" />
           <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+          <ScalarProperty Name="ContactData" ColumnName="ContactData" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="StorageFrom" ColumnName="StorageFrom" />
+          <ScalarProperty Name="StorageTo" ColumnName="StorageTo" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

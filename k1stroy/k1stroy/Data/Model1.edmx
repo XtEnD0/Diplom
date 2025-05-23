@@ -17,11 +17,16 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderCustomerID" Type="int" Nullable="false" />
+          <Property Name="OrderCreatorID" Type="int" Nullable="false" />
           <Property Name="OrderProductID" Type="int" Nullable="false" />
           <Property Name="OrderDate" Type="date" />
           <Property Name="OrderCompleteDate" Type="date" />
           <Property Name="OrderStatusID" Type="int" />
+          <Property Name="ContactData" Type="nvarchar" MaxLength="100" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="StorageFrom" Type="nvarchar" MaxLength="100" />
+          <Property Name="StorageTo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Count" Type="int" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -44,7 +49,7 @@
           <Property Name="InStock" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="300" />
           <Property Name="Characteristics" Type="nvarchar" MaxLength="300" />
-          <Property Name="ProductPhotoName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductPhotoName" Type="nvarchar" MaxLength="100" />
           <Property Name="Photo" Type="image" />
         </EntityType>
         <EntityType Name="ProductType">
@@ -125,7 +130,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Orders">
-              <PropertyRef Name="OrderCustomerID" />
+              <PropertyRef Name="OrderCreatorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -250,11 +255,16 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderCustomerID" Type="Int32" Nullable="false" />
+          <Property Name="OrderCreatorID" Type="Int32" Nullable="false" />
           <Property Name="OrderProductID" Type="Int32" Nullable="false" />
           <Property Name="OrderDate" Type="DateTime" Precision="0" />
           <Property Name="OrderCompleteDate" Type="DateTime" Precision="0" />
           <Property Name="OrderStatusID" Type="Int32" />
+          <Property Name="ContactData" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StorageFrom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StorageTo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Count" Type="Int32" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Orders_Products" FromRole="Orders" ToRole="Products" />
           <NavigationProperty Name="Status" Relationship="Self.FK_Orders_Status" FromRole="Orders" ToRole="Status" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
@@ -282,7 +292,7 @@
           <Property Name="InStock" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Characteristics" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="ProductPhotoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductPhotoName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Manufacturers" Relationship="Self.FK_Products_Manufacturers" FromRole="Products" ToRole="Manufacturers" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Products" FromRole="Products" ToRole="Orders" />
@@ -385,7 +395,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Orders">
-              <PropertyRef Name="OrderCustomerID" />
+              <PropertyRef Name="OrderCreatorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -498,11 +508,16 @@
             <EntityTypeMapping TypeName="k1stroyDBModel.Orders">
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderCustomerID" ColumnName="OrderCustomerID" />
+                <ScalarProperty Name="OrderCreatorID" ColumnName="OrderCreatorID" />
                 <ScalarProperty Name="OrderProductID" ColumnName="OrderProductID" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="OrderCompleteDate" ColumnName="OrderCompleteDate" />
                 <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="ContactData" ColumnName="ContactData" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="StorageFrom" ColumnName="StorageFrom" />
+                <ScalarProperty Name="StorageTo" ColumnName="StorageTo" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

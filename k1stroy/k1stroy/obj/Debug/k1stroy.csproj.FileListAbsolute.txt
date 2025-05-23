@@ -52,3 +52,5 @@ S:\Diplom\k1stroy\k1stroy\obj\Debug\Dialogs\UserAdd.g.cs
 S:\Diplom\k1stroy\k1stroy\obj\Debug\Dialogs\UserAdd.baml
 S:\Diplom\k1stroy\k1stroy\obj\Debug\Dialogs\UserEdit.g.cs
 S:\Diplom\k1stroy\k1stroy\obj\Debug\Dialogs\UserEdit.baml
+S:\Diplom\k1stroy\k1stroy\obj\Debug\Dialogs\OrderAddDialog.g.cs
+S:\Diplom\k1stroy\k1stroy\obj\Debug\Dialogs\OrderAddDialog.baml

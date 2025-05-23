@@ -22,6 +22,7 @@ namespace k1stroy.Pages
     {
         public string role { get; set; }
         public int UserID { get; set; }
+        public Data.Users Us { get; set; }
         public OrderObservePage(string RoleCheck, int CurrrentUserID)
         {
             role = RoleCheck;
@@ -151,7 +152,12 @@ namespace k1stroy.Pages
                                    p.ID.ToString().Contains(SearchTextBox.Text.ToLower()) ||
                                    p.OrderDate.ToString().Contains(SearchTextBox.Text.ToLower()) ||
                                    p.OrderCompleteDate.ToString().Contains(SearchTextBox.Text.ToLower()) ||
+                                   p.ContactData.ToLower().Contains(SearchTextBox.Text.ToLower())||
+                                   p.CustomerName.ToLower().Contains(SearchTextBox.Text.ToLower()) ||
+                                   p.StorageFrom.ToLower().Contains(SearchTextBox.Text.ToLower()) ||
+                                   p.StorageTo.ToLower().Contains(SearchTextBox.Text.ToLower()) ||
                                    p.Products.Price.ToString().Contains(SearchTextBox.Text))
+                        
                         .ToList();
                 }
                 OrdersView.ItemsSource = _orders;
@@ -184,7 +190,7 @@ namespace k1stroy.Pages
                                    p.OrderDate.ToString().Contains(SearchTextBox.Text.ToLower()) ||
                                    p.OrderCompleteDate.ToString().Contains(SearchTextBox.Text.ToLower()) ||
                                    p.Products.Price.ToString().Contains(SearchTextBox.Text))&&
-                                   p.OrderCustomerID == UserID) 
+                                   p.OrderCreatorID == UserID) 
                                    
                         .ToList();
                 }
@@ -206,6 +212,12 @@ namespace k1stroy.Pages
             
         }
 
-        
+        private void AddOrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Dialogs.OrderAddDialog(null, null, Update, null);
+            var ownerWindow = Window.GetWindow((DependencyObject)sender);
+            dialog.Owner = ownerWindow;
+            dialog.ShowDialog();
+        }
     }
 }

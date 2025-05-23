@@ -15,6 +15,7 @@ namespace k1stroy.Data
     
     public partial class k1stroyDBEntities : DbContext
     {
+
         private static k1stroyDBEntities _context;
         public static k1stroyDBEntities GetContext()
         {

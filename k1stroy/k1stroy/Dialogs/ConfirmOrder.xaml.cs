@@ -47,31 +47,13 @@ namespace k1stroy.Dialogs
         {
             if (CurrentEl.InStock != 0)
             {
+                string status = "Selected";
+                var dialog = new Dialogs.OrderAddDialog(CurrentEl, CurrentUser, Show, status);
+                var ownerWindow = Window.GetWindow((DependencyObject)sender);
+                dialog.Owner = ownerWindow;
+                Hide();
+                dialog.ShowDialog();
 
-                try
-                {
-                    var newOrder = new Data.Orders
-                    {
-                        OrderCustomerID = CurrentUser.ID,
-                        OrderProductID = CurrentEl.ID,
-                        OrderDate = DateTime.Now,
-                        OrderCompleteDate = null,
-                        OrderStatusID = 1
-                    };
-
-                    var context = Data.k1stroyDBEntities.GetContext();
-                    context.Orders.Add(newOrder);
-                    context.SaveChanges();
-
-                    string logline = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - создан Заказ(ID - {newOrder.ID}, заказчик - {CurrentUser.Surname} {CurrentUser.Firstname} {CurrentUser.Patronymic})";
-                    File.AppendAllText("log.txt", logline + Environment.NewLine);
-                    MessageBox.Show("Заказ успешно создан!");
-                    Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка создания: {ex.Message}\n\n{ex.InnerException?.Message}");
-                }
             }
             else
             {

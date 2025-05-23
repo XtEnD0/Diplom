@@ -15,11 +15,16 @@ namespace k1stroy.Data
     public partial class Orders
     {
         public int ID { get; set; }
-        public int OrderCustomerID { get; set; }
+        public int OrderCreatorID { get; set; }
         public int OrderProductID { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }
         public Nullable<System.DateTime> OrderCompleteDate { get; set; }
         public Nullable<int> OrderStatusID { get; set; }
+        public string ContactData { get; set; }
+        public string CustomerName { get; set; }
+        public string StorageFrom { get; set; }
+        public string StorageTo { get; set; }
+        public Nullable<int> Count { get; set; }
     
         public virtual Products Products { get; set; }
         public virtual Status Status { get; set; }

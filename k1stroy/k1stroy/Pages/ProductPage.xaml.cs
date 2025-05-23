@@ -221,7 +221,7 @@ namespace k1stroy.Pages
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (CurrentUser.Roles.Role != "Customer")
+            if (CurrentUser.Roles.Role != "Manager")
             {
 
                 var productListPage = Classes.manager.MainFrame.Content as ProductPage;

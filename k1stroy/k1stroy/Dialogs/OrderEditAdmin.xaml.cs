@@ -41,11 +41,18 @@ namespace k1stroy.Dialogs
 
             OrderDatePicker.SelectedDate = _currentOrder.OrderDate;
             OrderCompleteDatePicker.SelectedDate = _currentOrder.OrderCompleteDate;
+            CustomerNameTB.Text = _currentOrder.CustomerName;
+            ContactDataTB.Text = _currentOrder.ContactData;
+            StorageFromTB.Text = _currentOrder.StorageFrom;
+            StorageToTB.Text = _currentOrder.StorageTo;
+            CountTB.Text = _currentOrder.Count.ToString();
 
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            Int32.TryParse(CountTB.Text, out int CountRes);
+
             var context = Data.k1stroyDBEntities.GetContext();
 
             var selectedStatus = StatusCB.SelectedItem as Data.Status;
@@ -55,10 +62,15 @@ namespace k1stroy.Dialogs
             _currentOrder.OrderProductID = selectedProduct.ID;
 
             var selectedCustomer = CustomerCB.SelectedItem as Data.Users;
-            _currentOrder.OrderCustomerID = selectedCustomer.ID;
+            _currentOrder.OrderCreatorID = selectedCustomer.ID;
 
             _currentOrder.OrderDate = OrderDatePicker.SelectedDate;
             _currentOrder.OrderCompleteDate = OrderCompleteDatePicker.SelectedDate;
+            _currentOrder.CustomerName = CustomerNameTB.Text;
+            _currentOrder.ContactData = ContactDataTB.Text;
+            _currentOrder.StorageFrom = StorageFromTB.Text;
+            _currentOrder.StorageTo = StorageToTB.Text;
+            _currentOrder.Count = CountRes;
 
             context.Entry(_currentOrder).State = EntityState.Modified;
             context.SaveChanges();

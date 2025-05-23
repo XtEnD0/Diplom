@@ -78,6 +78,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\OrderAddDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\OrderEditAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -154,6 +158,9 @@
     </Compile>
     <Compile Include="Dialogs\ConfirmOrder.xaml.cs">
       <DependentUpon>ConfirmOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\OrderAddDialog.xaml.cs">
+      <DependentUpon>OrderAddDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\OrderEditAdmin.xaml.cs">
       <DependentUpon>OrderEditAdmin.xaml</DependentUpon>

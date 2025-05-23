@@ -12,11 +12,16 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="OrderCustomerID" Type="int" Nullable="false" />
+    <Property Name="OrderCreatorID" Type="int" Nullable="false" />
     <Property Name="OrderProductID" Type="int" Nullable="false" />
     <Property Name="OrderDate" Type="date" />
     <Property Name="OrderCompleteDate" Type="date" />
     <Property Name="OrderStatusID" Type="int" />
+    <Property Name="ContactData" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="StorageFrom" Type="nvarchar" MaxLength="100" />
+    <Property Name="StorageTo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Count" Type="int" />
   </EntityType>
   <EntityType Name="ProductCategory">
     <Key>
@@ -39,7 +44,7 @@
     <Property Name="InStock" Type="int" Nullable="false" />
     <Property Name="Description" Type="nvarchar" MaxLength="300" />
     <Property Name="Characteristics" Type="nvarchar" MaxLength="300" />
-    <Property Name="ProductPhotoName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductPhotoName" Type="nvarchar" MaxLength="100" />
     <Property Name="Photo" Type="image" />
   </EntityType>
   <EntityType Name="ProductType">
@@ -120,7 +125,7 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="Orders">
-        <PropertyRef Name="OrderCustomerID" />
+        <PropertyRef Name="OrderCreatorID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

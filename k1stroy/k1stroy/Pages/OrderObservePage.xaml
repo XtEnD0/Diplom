@@ -38,11 +38,10 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="140"></ColumnDefinition>
-                            <ColumnDefinition Width="300"></ColumnDefinition>
-                            <ColumnDefinition Width="65"></ColumnDefinition>
-                            <ColumnDefinition Width="250"></ColumnDefinition>
-                            <ColumnDefinition Width="120"></ColumnDefinition>
-                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="290"></ColumnDefinition>
+                            <ColumnDefinition Width="85"></ColumnDefinition>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="275"></ColumnDefinition>
                             <ColumnDefinition Width="110"></ColumnDefinition>
                             <ColumnDefinition Width="150"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
@@ -66,7 +65,7 @@
                             <TextBlock Text="{Binding Products.Price, StringFormat={}Цена: {0}}"/>
                         </StackPanel>
 
-                            <TextBlock Text="Заказчик:" VerticalAlignment="Center" FontWeight="Bold" Grid.Column="2"/>
+                            <TextBlock Text="Оформитель:" VerticalAlignment="Center" FontWeight="Bold" Grid.Column="2"/>
 
                             <StackPanel VerticalAlignment="Center" Margin="0,0,10,0" Orientation="Horizontal" Grid.Column="3">
                             <TextBlock Text="{Binding Users.Surname, StringFormat={}{0}}"/>
@@ -74,24 +73,25 @@
                             <TextBlock Text="{Binding Users.Patronymic, StringFormat={} {0}}"/>
                         </StackPanel>
 
-                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="4">
-                            <TextBlock Text="Дата создания:" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-                            <TextBlock Text="Дата завершения:" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-                        </StackPanel>
                         
-                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="5">
-                            <TextBlock Text="{Binding OrderDate, StringFormat={}{0:yyyy-MM-dd}}" FontWeight="Bold"/>
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="4">
+                            <TextBlock Text="{Binding OrderDate, StringFormat={}Дата оформления: {0:yyyy-MM-dd}}" FontWeight="Bold"/>
                             <TextBlock Text="{Binding OrderCompleteDate, 
-                                  StringFormat={}{0:yyyy-MM-dd},
+                                  StringFormat={}Дата завершения: {0:yyyy-MM-dd},
                                   TargetNullValue='не завершен'}" 
                                   FontWeight="Bold"/>
+                            <TextBlock Text="{Binding ContactData, StringFormat={}Контактная информация: {0}}"></TextBlock>
+                            <TextBlock Text="{Binding CustomerName, StringFormat={}Заказчик: {0}}"></TextBlock>
+                            <TextBlock Text="{Binding StorageFrom, StringFormat={}Отправка со склада: {0}}"></TextBlock>
+                            <TextBlock Text="{Binding StorageTo, StringFormat={}Адрес места назначения: {0}}" TextWrapping="Wrap"></TextBlock>
+                            <TextBlock Text="{Binding Count, StringFormat={}Количество: {0}}"></TextBlock>
                         </StackPanel>
 
-                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="6">
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical" Grid.Column="5">
                             <TextBlock Text="Статус заказа:"/>
                             <TextBlock Text="{Binding Status.StatusName}"></TextBlock>
                         </StackPanel>
-                        <Button x:Name="EditOrderButton" Content="Изменить информацию" Grid.Column="7"
+                        <Button x:Name="EditOrderButton" Content="Изменить информацию" Grid.Column="6"
                                 Height="30" Cursor="Hand" Width="150" Click="EditOrderButton_Click">
                             
                         </Button>
@@ -192,6 +192,11 @@
             <Button Content="Назад" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"
                 Height="25" Width="50" x:Name="BackButton" Click="BackButton_Click">
             </Button>
+            
+            <Button Content="Оформить заказ" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0"
+                Height="25" Width="120" x:Name="AddOrderButton" Click="AddOrderButton_Click">
+            </Button>
+
         </Grid>
 
     </Grid>
