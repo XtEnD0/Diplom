@@ -77,6 +77,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Storages">
+      <EntityTypeMapping TypeName="k1stroyDBModel.Storages">
+        <MappingFragment StoreEntitySet="Storages">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Storage" ColumnName="Storage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="k1stroyDBModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">

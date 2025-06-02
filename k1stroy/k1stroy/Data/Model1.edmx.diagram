@@ -4,19 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dedd666f3eae40d2a3ae4b95dc1a9f00" Name="Diagram1">
+      <Diagram DiagramId="7dc7cec1ef32436ca104628ba56d458c" Name="Diagram1">
         <EntityTypeShape EntityType="k1stroyDBModel.Manufacturers" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="k1stroyDBModel.Orders" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="k1stroyDBModel.Orders" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="k1stroyDBModel.ProductCategory" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="k1stroyDBModel.Products" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="k1stroyDBModel.ProductType" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="k1stroyDBModel.Roles" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="k1stroyDBModel.Status" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="k1stroyDBModel.Roles" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="k1stroyDBModel.Status" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="k1stroyDBModel.Storages" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="k1stroyDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="k1stroyDBModel.Users" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="k1stroyDBModel.Users" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
         <AssociationConnector Association="k1stroyDBModel.FK_Products_Manufacturers" ManuallyRouted="false" />
         <AssociationConnector Association="k1stroyDBModel.FK_Orders_Products" ManuallyRouted="false" />
         <AssociationConnector Association="k1stroyDBModel.FK_Orders_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="k1stroyDBModel.FK_Orders_Storages" ManuallyRouted="false" />
         <AssociationConnector Association="k1stroyDBModel.FK_Orders_Users" ManuallyRouted="false" />
         <AssociationConnector Association="k1stroyDBModel.FK_Products_ProductCategory" ManuallyRouted="false" />
         <AssociationConnector Association="k1stroyDBModel.FK_ProductType_ProductCategory" ManuallyRouted="false" />

@@ -22,12 +22,13 @@ namespace k1stroy.Data
         public Nullable<int> OrderStatusID { get; set; }
         public string ContactData { get; set; }
         public string CustomerName { get; set; }
-        public string StorageFrom { get; set; }
+        public Nullable<int> StorageFrom { get; set; }
         public string StorageTo { get; set; }
         public Nullable<int> Count { get; set; }
     
         public virtual Products Products { get; set; }
         public virtual Status Status { get; set; }
+        public virtual Storages Storages { get; set; }
         public virtual Users Users { get; set; }
     }
 }

@@ -29,6 +29,7 @@ namespace k1stroy.Dialogs
             StatusCB.ItemsSource = Data.k1stroyDBEntities.GetContext().Status.ToList();
             CustomerCB.ItemsSource = Data.k1stroyDBEntities.GetContext().Users.ToList();
             ProductCB.ItemsSource = Data.k1stroyDBEntities.GetContext().Products.ToList();
+            StorageFromTB.ItemsSource = Data.k1stroyDBEntities.GetContext().Storages.ToList();
 
             StatusCB.SelectedItem = Data.k1stroyDBEntities.GetContext().Status
                 .Where(d => d.ID == _currentOrder.Status.ID).FirstOrDefault();
@@ -39,11 +40,13 @@ namespace k1stroy.Dialogs
             ProductCB.SelectedItem = Data.k1stroyDBEntities.GetContext().Products
                 .Where(d => d.ID == _currentOrder.Products.ID).FirstOrDefault();
 
+            StorageFromTB.SelectedItem = Data.k1stroyDBEntities.GetContext().Storages
+                .Where(d => d.ID == _currentOrder.Storages.ID).FirstOrDefault();
+
             OrderDatePicker.SelectedDate = _currentOrder.OrderDate;
             OrderCompleteDatePicker.SelectedDate = _currentOrder.OrderCompleteDate;
             CustomerNameTB.Text = _currentOrder.CustomerName;
             ContactDataTB.Text = _currentOrder.ContactData;
-            StorageFromTB.Text = _currentOrder.StorageFrom;
             StorageToTB.Text = _currentOrder.StorageTo;
             CountTB.Text = _currentOrder.Count.ToString();
 
@@ -64,11 +67,13 @@ namespace k1stroy.Dialogs
             var selectedCustomer = CustomerCB.SelectedItem as Data.Users;
             _currentOrder.OrderCreatorID = selectedCustomer.ID;
 
+            var selectedStorage = StorageFromTB.SelectedItem as Data.Storages;
+            _currentOrder.StorageFrom = selectedStorage.ID;
+
             _currentOrder.OrderDate = OrderDatePicker.SelectedDate;
             _currentOrder.OrderCompleteDate = OrderCompleteDatePicker.SelectedDate;
             _currentOrder.CustomerName = CustomerNameTB.Text;
             _currentOrder.ContactData = ContactDataTB.Text;
-            _currentOrder.StorageFrom = StorageFromTB.Text;
             _currentOrder.StorageTo = StorageToTB.Text;
             _currentOrder.Count = CountRes;
 

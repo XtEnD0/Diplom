@@ -20,11 +20,12 @@
     <Property Name="OrderStatusID" Type="Int32" />
     <Property Name="ContactData" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="StorageFrom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StorageFrom" Type="Int32" />
     <Property Name="StorageTo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Count" Type="Int32" />
     <NavigationProperty Name="Products" Relationship="Self.FK_Orders_Products" FromRole="Orders" ToRole="Products" />
     <NavigationProperty Name="Status" Relationship="Self.FK_Orders_Status" FromRole="Orders" ToRole="Status" />
+    <NavigationProperty Name="Storages" Relationship="Self.FK_Orders_Storages" FromRole="Orders" ToRole="Storages" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
   </EntityType>
   <EntityType Name="ProductCategory">
@@ -82,6 +83,14 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Status" FromRole="Status" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Storages">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Storage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Storages" FromRole="Storages" ToRole="Orders" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -142,6 +151,18 @@
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="OrderStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Storages">
+    <End Role="Storages" Type="Self.Storages" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storages">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="StorageFrom" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -213,6 +234,7 @@
     <EntitySet Name="ProductType" EntityType="Self.ProductType" />
     <EntitySet Name="Roles" EntityType="Self.Roles" />
     <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="Storages" EntityType="Self.Storages" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Users" EntityType="Self.Users" />
     <AssociationSet Name="FK_Products_Manufacturers" Association="Self.FK_Products_Manufacturers">
@@ -225,6 +247,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Orders_Status" Association="Self.FK_Orders_Status">
       <End Role="Status" EntitySet="Status" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Storages" Association="Self.FK_Orders_Storages">
+      <End Role="Storages" EntitySet="Storages" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK_Orders_Users" Association="Self.FK_Orders_Users">

@@ -55,7 +55,7 @@
                           Margin="0,10,0,0"
                           SelectedDateFormat="Short"/>
 
-                <TextBlock Text="Контактные данные клиента (телефон/почта):" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                <TextBlock Text="Контактные данные клиента:" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                 <TextBox Margin="0,10,0,0" Height="25"
                          x:Name="ContactDataTB"></TextBox>
 
@@ -64,8 +64,8 @@
                          x:Name="CustomerNameTB"></TextBox>
 
                 <TextBlock Text="Отправление со склада:" HorizontalAlignment="Center" Margin="0,10,0,0"/>
-                <TextBox Margin="0,10,0,0" Height="25"
-                         x:Name="StorageFromTB"></TextBox>
+                <ComboBox Margin="0,10,0,0" Height="25" DisplayMemberPath="Storage"
+                         x:Name="StorageFromTB"></ComboBox>
 
                 <TextBlock Text="Адрес места назначения:" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                 <TextBox Margin="0,10,0,0" Height="25"

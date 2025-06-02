@@ -82,7 +82,7 @@
                                   FontWeight="Bold"/>
                             <TextBlock Text="{Binding ContactData, StringFormat={}Контактная информация: {0}}"></TextBlock>
                             <TextBlock Text="{Binding CustomerName, StringFormat={}Заказчик: {0}}"></TextBlock>
-                            <TextBlock Text="{Binding StorageFrom, StringFormat={}Отправка со склада: {0}}"></TextBlock>
+                            <TextBlock Text="{Binding Storages.Storage, StringFormat={}Отправка со склада: {0}}"></TextBlock>
                             <TextBlock Text="{Binding StorageTo, StringFormat={}Адрес места назначения: {0}}" TextWrapping="Wrap"></TextBlock>
                             <TextBlock Text="{Binding Count, StringFormat={}Количество: {0}}"></TextBlock>
                         </StackPanel>

@@ -35,6 +35,7 @@ namespace k1stroy.Dialogs
             Status = _status;
 
             StatusCheck();
+
         }
 
         private void StatusCheck()
@@ -42,6 +43,7 @@ namespace k1stroy.Dialogs
             StatusCB.ItemsSource = Data.k1stroyDBEntities.GetContext().Status.ToList();
             CustomerCB.ItemsSource = Data.k1stroyDBEntities.GetContext().Users.ToList();
             ProductCB.ItemsSource = Data.k1stroyDBEntities.GetContext().Products.ToList();
+            StorageFromTB.ItemsSource = Data.k1stroyDBEntities.GetContext().Storages.ToList();
 
             if (Status == "Selected")
             {
@@ -81,6 +83,7 @@ namespace k1stroy.Dialogs
             var selectedProduct = ProductCB.SelectedItem as Data.Products;
             var selectedCreator = CustomerCB.SelectedItem as Data.Users;
             var selectedStatus = StatusCB.SelectedItem as Data.Status;
+            var selectedStorage = StorageFromTB.SelectedItem as Data.Storages;
 
             Int32.TryParse(CountTB.Text, out int CountRes);
             if(CountRes > selectedProduct.InStock)
@@ -100,7 +103,7 @@ namespace k1stroy.Dialogs
                         OrderProductID = selectedProduct.ID,
                         ContactData = ContactDataTB.Text,
                         CustomerName = CustomerNameTB.Text,
-                        StorageFrom = StorageFromTB.Text,
+                        StorageFrom = selectedStorage.ID,
                         StorageTo = StorageToTB.Text,
                         Count = CountRes,
                         OrderDate = DateTime.Now,

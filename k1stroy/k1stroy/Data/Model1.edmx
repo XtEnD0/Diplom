@@ -24,7 +24,7 @@
           <Property Name="OrderStatusID" Type="int" />
           <Property Name="ContactData" Type="nvarchar" MaxLength="100" />
           <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
-          <Property Name="StorageFrom" Type="nvarchar" MaxLength="100" />
+          <Property Name="StorageFrom" Type="int" />
           <Property Name="StorageTo" Type="nvarchar" MaxLength="100" />
           <Property Name="Count" Type="int" />
         </EntityType>
@@ -74,6 +74,13 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StatusName" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Storages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Storage" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -119,6 +126,18 @@
             </Principal>
             <Dependent Role="Orders">
               <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Storages">
+          <End Role="Storages" Type="Self.Storages" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="StorageFrom" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -202,6 +221,7 @@
           <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storages" EntityType="Self.Storages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Orders_Products" Association="Self.FK_Orders_Products">
@@ -210,6 +230,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Orders_Status" Association="Self.FK_Orders_Status">
             <End Role="Status" EntitySet="Status" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Storages" Association="Self.FK_Orders_Storages">
+            <End Role="Storages" EntitySet="Storages" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_Users" Association="Self.FK_Orders_Users">
@@ -262,11 +286,12 @@
           <Property Name="OrderStatusID" Type="Int32" />
           <Property Name="ContactData" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="StorageFrom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StorageFrom" Type="Int32" />
           <Property Name="StorageTo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Count" Type="Int32" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Orders_Products" FromRole="Orders" ToRole="Products" />
           <NavigationProperty Name="Status" Relationship="Self.FK_Orders_Status" FromRole="Orders" ToRole="Status" />
+          <NavigationProperty Name="Storages" Relationship="Self.FK_Orders_Storages" FromRole="Orders" ToRole="Storages" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
         </EntityType>
         <EntityType Name="ProductCategory">
@@ -324,6 +349,14 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Status" FromRole="Status" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Storages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Storage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Storages" FromRole="Storages" ToRole="Orders" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -384,6 +417,18 @@
             </Principal>
             <Dependent Role="Orders">
               <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Storages">
+          <End Role="Storages" Type="Self.Storages" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Storages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="StorageFrom" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -455,6 +500,7 @@
           <EntitySet Name="ProductType" EntityType="Self.ProductType" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Storages" EntityType="Self.Storages" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="FK_Products_Manufacturers" Association="Self.FK_Products_Manufacturers">
@@ -467,6 +513,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Orders_Status" Association="Self.FK_Orders_Status">
             <End Role="Status" EntitySet="Status" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Storages" Association="Self.FK_Orders_Storages">
+            <End Role="Storages" EntitySet="Storages" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_Users" Association="Self.FK_Orders_Users">
@@ -569,6 +619,14 @@
               <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storages">
+            <EntityTypeMapping TypeName="k1stroyDBModel.Storages">
+              <MappingFragment StoreEntitySet="Storages">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -76,5 +76,40 @@ namespace k1stroy.Dialogs
         {
             Close();
         }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var result = MessageBox.Show(
+                    "Вы уверены, что хотите удалить этого пользователя?",
+                    "Подтверждение удаления",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    var context = Data.k1stroyDBEntities.GetContext();
+                    if (context.Entry(_currentUser).State == EntityState.Detached)
+                    {
+                        context.Users.Attach(_currentUser);
+                    }
+
+                    string logline = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - пользователь удален(ID - {_currentUser.ID}, ФИО - {_currentUser.Surname} {_currentUser.Firstname} {_currentUser.Patronymic})";
+                    File.AppendAllText("log.txt", logline + Environment.NewLine);
+
+                    context.Users.Remove(_currentUser);
+                    context.SaveChanges();
+
+                    MessageBox.Show("Пользователь успешно удален!");
+                    _Update?.Invoke();
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при удалении: {ex.Message}");
+            }
+        }
     }
 }

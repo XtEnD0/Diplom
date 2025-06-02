@@ -154,7 +154,7 @@ namespace k1stroy.Pages
                                    p.OrderCompleteDate.ToString().Contains(SearchTextBox.Text.ToLower()) ||
                                    p.ContactData.ToLower().Contains(SearchTextBox.Text.ToLower())||
                                    p.CustomerName.ToLower().Contains(SearchTextBox.Text.ToLower()) ||
-                                   p.StorageFrom.ToLower().Contains(SearchTextBox.Text.ToLower()) ||
+                                   p.Storages.Storage.ToLower().Contains(SearchTextBox.Text.ToLower()) ||
                                    p.StorageTo.ToLower().Contains(SearchTextBox.Text.ToLower()) ||
                                    p.Products.Price.ToString().Contains(SearchTextBox.Text))
                         

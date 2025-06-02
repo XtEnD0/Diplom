@@ -25,6 +25,7 @@ namespace k1stroy.Data
             }
             return _context;
         }
+
         public k1stroyDBEntities()
             : base("name=k1stroyDBEntities")
         {
@@ -42,6 +43,7 @@ namespace k1stroy.Data
         public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<Storages> Storages { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }

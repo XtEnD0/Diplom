@@ -147,6 +147,9 @@
     <Compile Include="Data\Status.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Storages.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
